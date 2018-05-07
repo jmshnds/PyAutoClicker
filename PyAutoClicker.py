@@ -41,7 +41,7 @@ def parseArguments(argv):
                     handleErr("Missing (x,y) coordinates")
 
             elif argv[i] == "-d" or argv[i] == "--delay":
-                if i+1 < len(argv)
+                if i+1 < len(argv):
                     try:
                         # Get delay value from next arg
                         options['delay'] = int(argv[i+1])

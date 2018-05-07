@@ -1,18 +1,12 @@
-# Simple autoclicker that can be used for idle games
+# PyAutoClicker
+# Description: Simple autoclicker that can be used for clicking a lot
+# Author: jmshnds
+# Date: 7 May 2018
 
 import sys
 import time
-import win32api, win32con
 
-class AutoClicker:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def click(self, x, y):
-        win32api.SetCursorPos((self.x, self.y))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,self.x,self.y,0,0)
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,self.x,self.y,0,0)
+from AutoClicker import AutoClicker
 
 def handleErr(message):
     print("ERROR: %s\n", message)
@@ -20,7 +14,7 @@ def handleErr(message):
 
 def parseArguments(argv):
     # Default options
-    options = {'quiet': False, 'x': 0, 'y': 0}
+    options = {'quiet': False, 'x': 0, 'y': 0, 'delay': 3}
     
     # Parse arguments and set options
     i = 1
@@ -45,6 +39,7 @@ def parseArguments(argv):
                     i += 2 # increment arg index
                 else:
                     handleErr("Missing (x,y) coordinates")
+                    
             else:
                 handleErr("Unknown argument " + argv[i])
         i += 1
@@ -64,18 +59,16 @@ if __name__ == '__main__':
     if not options['quiet']:
         print("Starting autoclicker at coordinates(%d, %d)" \
               % (clicker.x, clicker.y))
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
         
+        # Delay start
+        for i in range(options['delay'])[::-1]:
+            print(i+1)
+            time.sleep(1)
+    else:
+        # Delay start
+        time.sleep(options['delay'])
+
+    clicker.start() # Start auto clicking, returns once it stops
+
+    if not options['quiet']:
+        print("Autoclicking complete")

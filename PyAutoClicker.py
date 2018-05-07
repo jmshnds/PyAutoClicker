@@ -14,7 +14,7 @@ def handleErr(message):
 
 def parseArguments(argv):
     # Default options
-    options = {'quiet': False, 'x': 0, 'y': 0, 'delay': 3}
+    options = {'quiet': False, 'x': 0, 'y': 0, 'delay': 3, 'rate': 1}
     
     # Parse arguments and set options
     i = 1
@@ -50,6 +50,19 @@ def parseArguments(argv):
                     i += 1
                 else:
                     handleErr("Missing delay value")
+
+            elif argv[i] == "-r" or argv[i] == "--rate":
+                if i+1 < len(argv):
+                    clicks = 1
+                    try:
+                        # Get rate value from next arg
+                        clicks = int(argv[i+1])
+                    except ValueError:
+                        handleErr("Did not enter int click rate")
+                    options['rate'] = 1.0 / clicks
+                    i += 1
+                else:
+                    handleErr("Missing rate value")
             
             else:
                 handleErr("Unknown argument " + argv[i])
@@ -64,7 +77,7 @@ if __name__ == '__main__':
     options = parseArguments(sys.argv)
 
     # Initialize Autoclicker
-    clicker = AutoClicker(options['x'], options['y'])
+    clicker = AutoClicker(options['x'], options['y'], options['rate'])
     
     # Print start message
     if not options['quiet']:

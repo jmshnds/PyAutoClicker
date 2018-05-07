@@ -6,10 +6,11 @@ import win32con as wcon
 from getKeys import key_check
 
 class AutoClicker:
-    def __init__(self, x, y):
+    def __init__(self, x, y, rate):
         self.x = x
         self.y = y
         self.moveCursor(self.x, self.y)
+        self.rate = rate
         self.paused = False
         self.stop = False
 
@@ -29,7 +30,7 @@ class AutoClicker:
             if not self.paused:
                 self.click()
                 #print("Click!")
-            time.sleep(0.15) # delay
+            time.sleep(self.rate) # delay
 
             self.checkPause()
             if self.stop:

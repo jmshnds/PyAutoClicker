@@ -28,7 +28,7 @@ def parseArguments(argv):
             if argv[i] == "-q" or argv[i] == "--quiet":
                 options['quiet'] = True
                 
-            elif argv[i] == "-c" or argv[i] == "-coordinates":
+            elif argv[i] == "-c" or argv[i] == "--coordinates":
                 if i+2 < len(argv):
                     try:
                         # Get coordinates from next args
@@ -39,7 +39,18 @@ def parseArguments(argv):
                     i += 2 # increment arg index
                 else:
                     handleErr("Missing (x,y) coordinates")
-                    
+
+            elif argv[i] == "-d" or argv[i] == "--delay":
+                if i+1 < len(argv)
+                    try:
+                        # Get delay value from next arg
+                        options['delay'] = int(argv[i+1])
+                    except ValueError:
+                        handleErr("Did not enter integer delay")
+                    i += 1
+                else:
+                    handleErr("Missing delay value")
+            
             else:
                 handleErr("Unknown argument " + argv[i])
         i += 1

@@ -15,6 +15,10 @@ Possible args are:<br />
 | \-r R | Set integer number of clicks per second. Defaults to 1 click per second. |
 | \-q | Start in quit mode. |
 
+While the program is running the user may press:<br /> 
+P key to toggle the auto clicker. <br />
+Q key to quit the program. <br />
+
 ## Examples
 
 `PyAutoClicker.py -c 350 350`<br />

@@ -28,7 +28,7 @@ class AutoClicker:
         while True:
             if not self.paused:
                 self.click()
-                print("Click!")
+                #print("Click!")
             time.sleep(0.15) # delay
 
             self.checkPause()

@@ -13,13 +13,18 @@ Possible args are:<br />
 | \-c X Y | Set integer coordinates to (X, Y). Defaults to (0, 0). |
 | \-d D | Set start delay to integer value D. Defaults to 3 seconds. |
 | \-r R | Set integer number of clicks per second. Defaults to 1 click per second. |
-| \-q | Start in quit mode. |
+| \-q | Start in quiet mode. |
+| \-h | Display help menu. |
 
 While the program is running the user may press:<br /> 
 P key to toggle the auto clicker. <br />
 Q key to quit the program. <br />
 
 ## Examples
+
+`PyAutoClicker.py -h`<br />
+Display a help menu and exit. The help menu is identical to the Usage table above.<br />
+<br />
 
 `PyAutoClicker.py -c 350 350`<br />
 Start auto clicker at coordinates (350, 350).<br />
